@@ -8,6 +8,13 @@ export default function Form() {
         calories: 0
     });
 
+    const handleChange = (e: React.ChangeEvent<HTMLSelectElement> | React.ChangeEvent<HTMLInputElement>) => {
+        setActivity({
+            ...activity,
+            [e.target.id]: e.target.value
+        });
+    };
+
     return (
         <form>
             <p className="space-y-5 bg-white p-10 rounded-lg">
@@ -17,6 +24,7 @@ export default function Form() {
                         className="border border-slate-300 p-2 rounded-lg w-full bg-white"
                         id="category"
                         value={activity.category}
+                        onChange={handleChange}
                     >
                         {
                             categories.map(category => (
@@ -39,6 +47,7 @@ export default function Form() {
                         className="border border-slate-300 p-2 rounded-lg"
                         placeholder="e.g. Food, Orange Juice, Salad, Weights, Bike"
                         value={activity.name}
+                        onChange={handleChange}
                     >
                     </input>
                 </div>
@@ -51,6 +60,7 @@ export default function Form() {
                         className="border border-slate-300 p-2 rounded-lg"
                         placeholder="Calories e.g. 300 or 500"
                         value={activity.calories}
+                        onChange={handleChange}
                     >
                     </input>
                 </div>
