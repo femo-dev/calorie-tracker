@@ -21,7 +21,6 @@ export default function Form({dispatch} : FormProps) {
 
     const handleChange = (e: ChangeEvent<HTMLSelectElement> | ChangeEvent<HTMLInputElement>) => {
         const isNumberField = ['category', 'calories'].includes(e.target.id);
-        console.log(isNumberField);
 
         setActivity({
             ...activity,
@@ -31,7 +30,6 @@ export default function Form({dispatch} : FormProps) {
 
     const isValidActivity = () => {
         const { name, calories } = activity;
-        console.log(name.trim() !== '' && calories > 0);
 
         return name.trim() !== '' && calories > 0;
     }
@@ -50,7 +48,7 @@ export default function Form({dispatch} : FormProps) {
             className="space-y-5 bg-white shadow p-10 rounded-lg"
             onSubmit={handleSubmit}
         >
-            <p className="space-y-5 bg-white p-10 rounded-lg">
+            <div className="space-y-5 bg-white p-10 rounded-lg">
                 <div className="grid grid-cols-1 gap-3">
                     <label htmlFor="category" className="font-bold">Category:</label>
                     <select
@@ -104,7 +102,7 @@ export default function Form({dispatch} : FormProps) {
                     value={activity.category === 1 ? 'Save Food' : 'Save Exercise'}
                     disabled={!isValidActivity()}
                 />
-            </p>
+            </div>
         </form>
     )
 }
